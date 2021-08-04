@@ -29,18 +29,6 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
     private ReactInstanceManager mReactInstanceManager;
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 200) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
-                    // SYSTEM_ALERT_WINDOW permission not granted
-                }
-            }
-        }
-        mReactInstanceManager.onActivityResult( this, requestCode, resultCode, data );
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -63,7 +51,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
                 .build();
         // 注意这里的MyReactNativeApp 必须对应"index.js"中的
         // "AppRegistry.registerComponent()"的第一个参数
-        mReactRootView.startReactApplication(mReactInstanceManager, "MyReactNativeApp", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "RN4Android", null);
 
         setContentView(mReactRootView);
     }
